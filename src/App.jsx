@@ -2,6 +2,10 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import "./App.css";
 
+
+// Cambia el título de la página.
+window.document.title = 'Tres en linea'; 
+
 // Componente Square: representa un cuadrado en el tablero del juego.
 function Square({ value, onSquareClick }) {
   return (
@@ -63,10 +67,10 @@ function Board({ xIsNext, squares, onPlay }) {
   return (
     <>
       <div className="cajonAplicacion">
-        <div className="status">{status}</div>
-        <div>
+      <div>
         <h1 className="Titulo">TRES EN LINEA</h1>
         </div>
+        <div className="status">{status}</div>
         <div className="board-row">
           <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
           <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
@@ -82,18 +86,13 @@ function Board({ xIsNext, squares, onPlay }) {
           <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
           <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
         </div>
-      </div>
-      <div className="pie_pagina">
-        <footer>
-          <hr />
-          <h2>Componente front-end del proyecto formativo y proyecto de clase GA7-220501096-EV03</h2>
-          <p>APRENDICES:</p>
-          <p>ALISON YULIET OSPINA CORTES | ALEXANDER OROZCO | LUIS ANDRÉS RÍOS NOREÑA | LUIS RINCON</p>
-        </footer>
-        </div>
+      </div>  
     </>
   )
 }
+
+
+
 
 // Componente Game: representa el juego completo.
 function Game() {
@@ -125,9 +124,9 @@ function Game() {
       description = "Ir al inicio del juego";
     }
     return (
-      <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
-      </li>
+        <li key={move} className="listado">
+          <button onClick={() => jumpTo(move)}>{description}</button>
+        </li>
     );
   });
   
@@ -141,6 +140,13 @@ function Game() {
       </div>
       <div className="game-info">
         <ol>{moves}</ol>
+      </div>
+      <div className="pie_pagina">
+          <hr/>
+            <footer>
+              <h2>Componente front-end del proyecto formativo y proyecto de clase GA7-220501096-EV03</h2>
+              <p>APRENDICES: ALISON YULIET OSPINA CORTES | ALEXANDER OROZCO | LUIS ANDRÉS RÍOS NOREÑA | LUIS RINCON</p>
+            </footer>
       </div>
     </div>
   );
@@ -168,5 +174,3 @@ function calculateWinner(squares) {
 }
 
 export default Game;
-
-
