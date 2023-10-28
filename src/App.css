@@ -41,6 +41,27 @@ body {
   min-height: 100vh;
 }
 
+.cajonAplicacion {
+  background-color: rgba(0, 0, 0, 0.336);
+  width: auto;
+  height: auto;
+  margin: 0;
+  border-radius: 18px;
+}
+
+.cajonAplicacion .Titulo {
+  margin:0%;
+  font-family: 'funktur', cursive;
+  text-align: center;
+  font-weight: 400px;
+  color: #f9f9f9;
+  text-shadow: 0 0 5px #6d0c6d, 0 0 25px  #c9e4f3, 0 0 50px  #c9e4f3, 0 0 100px  #c9e4f3 ;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 1s;
+  
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -58,11 +79,25 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #ffffff;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.board-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.square {
+  font-size: 2rem;
+  width: 100px;
+  height: 100px;
+  margin: 5px;
 }
 
 @media (prefers-color-scheme: light) {
@@ -120,3 +155,34 @@ button:focus-visible {
 .read-the-docs {
   color: #888;
 }
+
+.Titulo {
+
+  margin:0%;
+  padding: 30px 30px;
+  margin-top: -200px;
+  margin-bottom: 100px;
+  font-family: 'funktur', cursive;
+  text-align: center;
+  font-weight: 400px;
+  color: #f9f9f9;
+  text-shadow: 0 0 5px #6d0c6d, 0 0 25px  #c9e4f3, 0 0 50px  #c9e4f3, 0 0 100px  #c9e4f3 ;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: 1s;
+}
+
+hr{
+  background-color: #242424;
+  border: 20%;
+  width: 100%;
+  margin:  400px 0px 0px 0px;
+}
+.pie_pagina{
+  background: #00000065 ;
+  font-family: 'funktur', cursive;
+  text-shadow: 0 0 5px white  #9e9e9e, 0 0 50px  #c9e4f3, 0 0 100px  #c9e4f3 ; 
+  text-align: center;
+  transition: 1s;
+}
+
