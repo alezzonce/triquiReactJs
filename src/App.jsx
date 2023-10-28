@@ -2,6 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import "./App.css";
 
+// Componente Square: representa un cuadrado en el tablero del juego.
 function Square({ value, onSquareClick }) {
   return (
     <button className="square" onClick={onSquareClick}>
@@ -9,18 +10,29 @@ function Square({ value, onSquareClick }) {
     </button>
   );
 }
-/*
+
+// Propiedades del componente Square.
 Square.propTypes = {
   value: PropTypes.string,
   onSquareClick: PropTypes.func,
 };
-*/
 
+/**
+ * Componente Board: representa el tablero del juego.
+ * @param {Object} props - Las propiedades del componente.
+ * @param {boolean} props.xIsNext - Indica si el siguiente jugador es X.
+ * @param {Array} props.squares - El estado actual del tablero.
+ * @param {Function} props.onPlay - La función que se llama cuando se hace clic en un cuadrado.
+ * @returns {JSX.Element} - El componente Board.
+ */
 function Board({ xIsNext, squares, onPlay }) {
+  // Función que se llama cuando se hace clic en un cuadrado.
   function handleClick(i) {
+    // Si ya hay un ganador o el cuadrado ya está ocupado, no hacer nada.
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
+    // Crear una nueva matriz de cuadrados y actualizar el estado del juego.
     const nextSquares = squares.slice();
     if (xIsNext) {
       nextSquares[i] = "X";
@@ -30,12 +42,14 @@ function Board({ xIsNext, squares, onPlay }) {
     onPlay(nextSquares);
   }
 
+  // Propiedades del componente Board.
   Board.propTypes = {
     xIsNext: PropTypes.bool,
     squares: PropTypes.array,
     onPlay: PropTypes.func,
   };
 
+  // Determinar si hay un ganador en el tablero actual.
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
@@ -44,6 +58,7 @@ function Board({ xIsNext, squares, onPlay }) {
     status = "Siguiente jugador: " + (xIsNext ? "X" : "O");
   }
 
+  // Renderizar el tablero con los cuadrados.
   return (
     <>
       <div className="cajonAplicacion">
@@ -68,22 +83,28 @@ function Board({ xIsNext, squares, onPlay }) {
   );
 }
 
-export default function Game() {
+// Componente Game: representa el juego completo.
+function Game() {
+  // Estado del juego: historial de movimientos y movimiento actual.
   const [history, setHistory] = useState([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState(0);
   const xIsNext = currentMove % 2 === 0;
   const currentSquares = history[currentMove];
 
+  // Función que se llama cuando se hace clic en un cuadrado.
   function handlePlay(nextSquares) {
+    // Actualizar el historial de movimientos y el movimiento actual.
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
   }
 
+  // Función que se llama cuando se selecciona un movimiento anterior.
   function jumpTo(nextMove) {
     setCurrentMove(nextMove);
   }
 
+  // Renderizar la lista de movimientos anteriores.
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
@@ -98,6 +119,7 @@ export default function Game() {
     );
   });
 
+  // Renderizar el juego completo.
   return (
     <div className="game">
       <div className="game-board">
@@ -110,6 +132,7 @@ export default function Game() {
   );
 }
 
+// Función que determina si hay un ganador en el tablero actual.
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
@@ -129,3 +152,5 @@ function calculateWinner(squares) {
   }
   return null;
 }
+
+export default Game;
