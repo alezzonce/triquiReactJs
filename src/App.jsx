@@ -9,11 +9,12 @@ function Square({ value, onSquareClick }) {
     </button>
   );
 }
-//NI IDEA QUE HACE PERO SE NECESITA :p
+/*
 Square.propTypes = {
   value: PropTypes.string,
   onSquareClick: PropTypes.func,
 };
+*/
 
 function Board({ xIsNext, squares, onPlay }) {
   function handleClick(i) {
