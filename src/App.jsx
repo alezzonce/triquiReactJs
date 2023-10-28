@@ -17,7 +17,7 @@ Square.propTypes = {
   onSquareClick: PropTypes.func,
 };
 
-/**
+/*
  * Componente Board: representa el tablero del juego.
  * @param {Object} props - Las propiedades del componente.
  * @param {boolean} props.xIsNext - Indica si el siguiente jugador es X.
@@ -25,6 +25,7 @@ Square.propTypes = {
  * @param {Function} props.onPlay - La función que se llama cuando se hace clic en un cuadrado.
  * @returns {JSX.Element} - El componente Board.
  */
+
 function Board({ xIsNext, squares, onPlay }) {
   // Función que se llama cuando se hace clic en un cuadrado.
   function handleClick(i) {
@@ -63,6 +64,9 @@ function Board({ xIsNext, squares, onPlay }) {
     <>
       <div className="cajonAplicacion">
         <div className="status">{status}</div>
+        <div>
+        <h1 className="Titulo">TRES EN LINEA</h1>
+        </div>
         <div className="board-row">
           <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
           <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
@@ -79,8 +83,16 @@ function Board({ xIsNext, squares, onPlay }) {
           <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
         </div>
       </div>
+      <div className="pie_pagina">
+        <footer>
+          <hr />
+          <h2>Componente front-end del proyecto formativo y proyecto de clase GA7-220501096-EV03</h2>
+          <p>APRENDICES:</p>
+          <p>ALISON YULIET OSPINA CORTES | ALEXANDER OROZCO | LUIS ANDRÉS RÍOS NOREÑA | LUIS RINCON</p>
+        </footer>
+        </div>
     </>
-  );
+  )
 }
 
 // Componente Game: representa el juego completo.
@@ -118,6 +130,8 @@ function Game() {
       </li>
     );
   });
+  
+  
 
   // Renderizar el juego completo.
   return (
@@ -154,3 +168,5 @@ function calculateWinner(squares) {
 }
 
 export default Game;
+
+
